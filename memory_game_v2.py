@@ -38,7 +38,7 @@ for nums in range (1,17):
         for column_num in range(0, 5, 1):
             btn.append(Button(width = 3, height=1,)
             tk.btn[i].grid(row = row_num, column = column_num)
-             i +=1
+            i +=1
 
 btn.mainloop()
 
@@ -48,5 +48,3 @@ btn.mainloop()
 
 #     Button(app, text = "")	
 #     .grid()
-
-
