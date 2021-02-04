@@ -24,23 +24,27 @@
 
 #-----Tkinter Set up------
 import tkinter as tk
-root = tk.Tk() 
-root.title("Memory Game")
-root.geometery('200x100')
-app = tk.Frame(root) 
-app.grid
+class MemoryGame(tk.Frame):
+    def __init__(self,master):
+        super().__init__(master)
+        self.grid()
+        self.create_widgets()
 
+    def create_widgets(self):
 
-btn = []
-i=0
-for nums in range (1,17):
-    for row_num in range(0, 5, 1):
-        for column_num in range(0, 5, 1):
-            btn.append(Button(width = 3, height=1,)
-            tk.btn[i].grid(row = row_num, column = column_num)
-            i +=1
+        #btn = []
+        i=0
+        #for nums in range (1,17):
+        for row_num in range(0, 4, 1):
+            for column_num in range(0, 4, 1):
+                    #btn.append(Button(width = 3, height=1,)
+                tk.Button(self, text='?', bg = 'Red', width = 10
+                 
+                ).grid(row=row_num, column=column_num, columnspan = 1, sticky = tk.W)
+                    #tk.btn[i].grid(row = row_num, column = column_num)
+                    #i +=1
 
-btn.mainloop()
+        #btn.mainloop()
 
 
 # for creating card/button
@@ -48,3 +52,9 @@ btn.mainloop()
 
 #     Button(app, text = "")	
 #     .grid()
+
+root = tk.Tk() 
+root.title("Memory Game")
+#root.geometery('200x100')
+app = MemoryGame(root) 
+root.mainloop()
