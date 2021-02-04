@@ -20,33 +20,22 @@
 # show card if clicked card is shown and everytime we get a pair the pair is removed
 # suceed in fewest amount of attempts 
 
-
-
 #-----Tkinter Set up------
 import tkinter as tk
+class MemoryGame(tk.Frame):
+    def __init__(self,master):
+        super().__init__(master)
+        self.grid()
+        self.create_widgets()
+
+    def create_widgets(self):
+        for row_num in range(4):
+            for column_num in range(4):
+                tk.Button(self, text='?', bg = 'Red', width = 10
+                 
+                ).grid(row=row_num, column=column_num, columnspan = 1, sticky = tk.W)
+
 root = tk.Tk() 
 root.title("Memory Game")
-root.geometery('200x100')
-app = tk.Frame(root) 
-app.grid
-
-
-btn = []
-i=0
-for nums in range (1,17):
-    for row_num in range(0, 5, 1):
-        for column_num in range(0, 5, 1):
-            # btn.append(bttn = tk.Button(width = 3, height=1))
-            # btn[i].tk.grid(row = row_num, column = column_num)
-            # i +=1
-
-# btn.mainloop.tk()
-
-
-# for creating card/button
-# for nums in range(0,17)
-
-#     Button(app, text = "")	
-#     .grid()
-
-
+app = MemoryGame(root) 
+root.mainloop()
