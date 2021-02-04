@@ -36,9 +36,9 @@ i=0
 for nums in range (1,17):
     for row_num in range(0, 5, 1):
         for column_num in range(0, 5, 1):
-            btn.append(bttn = tk.Button(width = 3, height=1))
-            btn[i].tk.grid(row = row_num, column = column_num)
-            i +=1
+            # btn.append(bttn = tk.Button(width = 3, height=1))
+            # btn[i].tk.grid(row = row_num, column = column_num)
+            # i +=1
 
 # btn.mainloop.tk()
 
