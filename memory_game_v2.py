@@ -24,6 +24,7 @@
 
 #-----Tkinter Set up------
 import tkinter as tk
+import random
 class MemoryGame(tk.Frame):
     def __init__(self,master):
         super().__init__(master)
@@ -31,20 +32,30 @@ class MemoryGame(tk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
-
+        rand_list = ["apple.png","banana.png","grape.png", "orange.png", "peach.png","strawberry.png","watermelon.png", "apple.png","banana.png","grape.png", "orange.png", "peach.png","strawberry.png","watermelon.png"]
+        rand_choose = random.randint(0,15)
+        
         #btn = []
         i=0
         #for nums in range (1,17):
         for row_num in range(0, 4, 1):
             for column_num in range(0, 4, 1):
                     #btn.append(Button(width = 3, height=1,)
-                tk.Button(self, text='?', bg = 'Red', width = 10
+                pict = tk.PhotoImage(file = "fruit-pictures/" + rand_list[rand_choose])
+                tk.Button(self, text='?', bg = 'Red', width = 3, image = pict
                  
                 ).grid(row=row_num, column=column_num, columnspan = 1, sticky = tk.W)
                     #tk.btn[i].grid(row = row_num, column = column_num)
                     #i +=1
 
         #btn.mainloop()
+    
+    
+    #def pict(self):
+        #rand_list = ["apple.png","banana.png","grape.png", "orange.png", "peach.png","strawberry.png","watermelon.png", "apple.png","banana.png","grape.png", "orange.png", "peach.png","strawberry.png","watermelon.png"]
+        #rand_choose = random.randint(0,15)
+        #photo = tk.PhotoImage(file = "fruit-pictures/" + rand_list[rand_choose])
+        #return photo
 
 
 # for creating card/button
