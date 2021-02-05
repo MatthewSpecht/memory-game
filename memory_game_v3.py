@@ -21,6 +21,13 @@ class MemoryGame(Frame):
 
         #btn.mainloop()
 
+        # card_list=[apple.png, banana.png, grape.png, orange.png, peach.png, pear.png, strawberry.png]*2
+        
+        # random.shuffle(card_list)
+
+        # for c in card_list:
+        #     Button["text"]=card_list[c]
+
 
 # for creating card/button
 # for nums in range(0,17)
