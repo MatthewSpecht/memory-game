@@ -32,8 +32,8 @@ class MemoryGame(tk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        rand_list = ["apple.png","banana.png","grape.png", "orange.png", "peach.png","strawberry.png","watermelon.png", "apple.png","banana.png","grape.png", "orange.png", "peach.png","strawberry.png","watermelon.png"]
-        rand_choose = random.randint(0,15)
+        #rand_list = ["apple.png","banana.png","grape.png", "orange.png", "peach.png","strawberry.png","watermelon.png", "apple.png","banana.png","grape.png", "orange.png", "peach.png","strawberry.png","watermelon.png"]
+        #rand_choose = random.randint(0,15)
         
         #btn = []
         i=0
@@ -41,8 +41,8 @@ class MemoryGame(tk.Frame):
         for row_num in range(0, 4, 1):
             for column_num in range(0, 4, 1):
                     #btn.append(Button(width = 3, height=1,)
-                pict = tk.PhotoImage(file = "fruit-pictures/" + rand_list[rand_choose])
-                tk.Button(self, text='?', bg = 'Red', width = 3, image = pict
+                #pict = tk.PhotoImage(file = "fruit-pictures/" + rand_list[rand_choose])
+                result = tk.Button(self, text='?', bg = 'Red', width = 3, command = self.bttn_click
                  
                 ).grid(row=row_num, column=column_num, columnspan = 1, sticky = tk.W)
                     #tk.btn[i].grid(row = row_num, column = column_num)
@@ -51,12 +51,15 @@ class MemoryGame(tk.Frame):
         #btn.mainloop()
     
     
-    #def pict(self):
-        #rand_list = ["apple.png","banana.png","grape.png", "orange.png", "peach.png","strawberry.png","watermelon.png", "apple.png","banana.png","grape.png", "orange.png", "peach.png","strawberry.png","watermelon.png"]
-        #rand_choose = random.randint(0,15)
-        #photo = tk.PhotoImage(file = "fruit-pictures/" + rand_list[rand_choose])
+    def bttn_click(self):
+        rand_list = ["apple.png","banana.png","grape.png", "orange.png", "peach.png","pear.png","strawberry.png","watermelon.png", "apple.png","banana.png","grape.png", "orange.png", "pear.png","peach.png","strawberry.png","watermelon.png"]
+        rand_choose = random.randint(0,15)
+        photo = tk.PhotoImage(file = "fruit-pictures/" + rand_list[rand_choose])
         #return photo
-
+        #photo_button 
+        result = tk.Label(root, image = photo)
+        #photo_button.img=photo
+        #photo_button.pack()
 
 # for creating card/button
 # for nums in range(0,17)
