@@ -61,6 +61,7 @@ class Window(Frame):
                 self.check = Label(self,text = "You found a match!")#.grid(row=5,column=6)
                 self.check.grid(row=5,column=6)
                 rand_list.remove(remember1)
+                ### Destroy button after match 
                 
             else:
                 self.check = Label(self,text = "You did not find a match! Keep trying!!!")#.grid(row=5,column=7)
