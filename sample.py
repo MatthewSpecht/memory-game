@@ -9,7 +9,7 @@ class Window(Frame):
         self.master = master
         self.pack(fill=BOTH, expand=1)
         
-        sample = Image.open("pear.png")
+        sample = Image.open("fruit-pictures/pear.png")
         pear = ImageTk.PhotoImage(sample)
         sample = Label(self, image=pear)
         sample.image = pear
