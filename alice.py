@@ -27,9 +27,7 @@ for i in matches:
     for r in range(4):
         for c in range(4):
             #  "b" + str(i).grid(row=r, column=c, columnspan = 1, sticky = tk.W)             
-            "b" + str(i)=tk.Button(my_frame, text='?',  font=("Helvetica", 20), bg = 'Red', width = 20, height = 10, command = lambda: button_click("b" + str(i), i)
-                                  ).grid(row=r, column=c, columnspan = 1, sticky = tk.W)
-
+            b = tk.Button(my_frame, text='?',  font=("Helvetica", 20), bg = 'Red', width = 20, height = 10, command = lambda: button_click(b, i)).grid(row=r, column=c, columnspan = 1, sticky = tk.W)
                      
 
 

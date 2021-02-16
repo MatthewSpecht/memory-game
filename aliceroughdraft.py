@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox
+
 import random
 
 root = tk.Tk() 
@@ -42,12 +42,8 @@ def button_click(b, i):
             my_label.config(text="NO!")
             count = 0
             answer_list = []
-            messagebox.showinfo("Incorrect!","Incorrect")
+            
 
-            for key in answer_dict:
-                key["text"] = '?'
-
-            answer_dict = {}
 
 b0= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b0, 0))
 b1= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b1, 1))
