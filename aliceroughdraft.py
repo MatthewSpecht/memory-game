@@ -8,7 +8,9 @@ root.title("Memory Game")
 # root.geometery("550x550")
 
 # matches = [PhotoImage(file = "fruit-pictures/apple.png"),PhotoImage(file = "fruit-pictures/orange.png"),PhotoImage(file = "fruit-pictures/banana.png"),PhotoImage(file = "fruit-pictures/grape.png"), PhotoImage(file = "fruit-pictures/peach.png"),PhotoImage(file = "fruit-pictures/pear.png"),PhotoImage(file = "fruit-pictures/watermelon.png"),PhotoImage(file = "fruit-pictures/strawberry.png")]*2
-matches = [PhotoImage(file = "fruit-pictures/banana.png")]*16
+#matches = [PhotoImage(file = "fruit-pictures/banana.gif")]*16
+# matches = [1,2,3,4,5,6,7,8]*2
+
 
 random.shuffle(matches)
 
@@ -21,8 +23,8 @@ answer_dict ={}
 def button_click(b, i):
     global count, answer_list, answer_dict
     if b["text"] == '?' and count < 2:
-        b.configure(image = matches[i])
-        b.photo = matches[i] #keep a refrence to it 
+        b["text"] = matches[i]
+        # b.photo = matches[i] #keep a refrence to it 
 
         # add num to answer list
         answer_list.append(i)
@@ -51,13 +53,13 @@ def button_click(b, i):
 
             for key in answer_dict:
                 key["text"] = '?'
-                key.configure(image='')
+                key.configure
                 
 
             answer_dict = {}
 
 def reset():
-    global matches, winner
+    #global matches, winner
 
     matches = [1,2,3,4,5,6,7,8]*2
     random.shuffle(matches)
@@ -70,27 +72,27 @@ def reset():
 
 restart= tk.Button(my_frame, text='Restart', width= 6, height = 2, command = reset).grid(row=4, column=0, columnspan = 1, sticky = tk.W) 
 
-x = PhotoImage(file = "fruit-pictures/banana.png")
+# x = PhotoImage(file = "fruit-pictures/banana.png")
 
-b0= tk.Button(my_frame, image = x,  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b0, 0))
+b0= tk.Button(my_frame, text = '?',  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b0, 0))
 b1= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red',  command = lambda: button_click(b1, 1))
-b2= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b2, 2))
-b3= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b3, 3))
+b2= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b2, 2))
+b3= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b3, 3))
 
-b4= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b4, 4))
-b5= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b5, 5))
-b6= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b6, 6))
-b7= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b7, 7))
+b4= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b4, 4))
+b5= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b5, 5))
+b6= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b6, 6))
+b7= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b7, 7))
 
-b8= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b8, 8))
-b9= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b9, 9))
-b10= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b10, 10))
-b11= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b11, 11))
+b8= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b8, 8))
+b9= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b9, 9))
+b10= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b10, 10))
+b11= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b11, 11))
 
-b12= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b12, 12))
-b13= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b13, 13))
-b14= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b14, 14))
-b15= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', width = 10, height = 5, command = lambda: button_click(b15, 15))
+b12= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b12, 12))
+b13= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b13, 13))
+b14= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b14, 14))
+b15= tk.Button(my_frame, text='?',  font=("Helvetica", 10), bg = 'Red', command = lambda: button_click(b15, 15))
 
 
 b0.grid(row=0, column=0, columnspan = 1, sticky = tk.W)             
