@@ -7,7 +7,9 @@ root = tk.Tk()
 root.title("Memory Game")
 # root.geometery("550x550")
 
-images = [PhotoImage(file = "small_fruits/small_orange.gif"),PhotoImage(file = "small_fruits/small_banana.gif"),PhotoImage(file = "small_fruits/small_grape.gif"), PhotoImage(file = "small_fruits/small_peach.gif"),PhotoImage(file = "small_fruits/small_pear.gif"),PhotoImage(file = "small_fruits/small_watermelon.gif"),PhotoImage(file = "small_fruits/small_strawberry.gif"),PhotoImage(file = "small_fruits/small_banana.gif")]
+images = [PhotoImage(file = "small_fruits/small_orange.gif"),PhotoImage(file = "small_fruits/small_grape.gif"), 
+PhotoImage(file = "small_fruits/small_peach.gif"),PhotoImage(file = "small_fruits/small_pear.gif"),
+PhotoImage(file = "small_fruits/small_watermelon.gif"),PhotoImage(file = "small_fruits/small_strawberry.gif"),PhotoImage(file = "small_fruits/small_banana.gif"), PhotoImage(file = "small_fruits/small_apple.gif")]
 # images = [PhotoImage(file = "small_fruits/small_orange.gif")]*8
 matches = [0,1,2,3,4,5,6,7]*2
 
