@@ -7,8 +7,8 @@ root = tk.Tk()
 root.title("Memory Game")
 # root.geometery("550x550")
 
-images = [PhotoImage(file = "fruit-pictures/orange.png"),PhotoImage(file = "fruit-pictures/banana.png"),PhotoImage(file = "fruit-pictures/grape.png"), PhotoImage(file = "fruit-pictures/peach.png"),PhotoImage(file = "fruit-pictures/pear.png"),PhotoImage(file = "fruit-pictures/watermelon.png"),PhotoImage(file = "fruit-pictures/strawberry.png"),PhotoImage(file = "fruit-pictures/banana.gif")]
-# images = [PhotoImage(file = "fruit-pictures/small_orange.gif")]*8
+images = [PhotoImage(file = "small_fruits/small_orange.gif"),PhotoImage(file = "small_fruits/small_banana.gif"),PhotoImage(file = "small_fruits/small_grape.gif"), PhotoImage(file = "small_fruits/small_peach.gif"),PhotoImage(file = "small_fruits/small_pear.gif"),PhotoImage(file = "small_fruits/small_watermelon.gif"),PhotoImage(file = "small_fruits/small_strawberry.gif"),PhotoImage(file = "small_fruits/small_banana.gif")]
+# images = [PhotoImage(file = "small_fruits/small_orange.gif")]*8
 matches = [0,1,2,3,4,5,6,7]*2
 
 
@@ -72,7 +72,7 @@ def reset():
 
 restart= tk.Button(my_frame, text='Restart', width= 6, height = 2, command = reset).grid(row=4, column=0, columnspan = 3, sticky = tk.W) 
 
-# x = PhotoImage(file = "fruit-pictures/banana.png")
+# x = PhotoImage(file = "small_fruits/banana.gif")
 
 grid_buttons = []
 index = 0
