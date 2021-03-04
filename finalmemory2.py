@@ -66,18 +66,15 @@ def reset():
 
     matches = [1,2,3,4,5,6,7,8]*2
     random.shuffle(matches)
-    my_label.config(text="") 
+    my_label.config(text=" ") 
 
     # buttonlist = [b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15]
     for button in grid_buttons:
         button.config(text='?', state="normal", image ='')
-
     canvas.delete(tk.ALL)
     minute = 0
     time = 0
-    # timer = canvas.create_text(100,100, text= "Minutes: 0 Seconds: 0")
-
-        
+    timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
 
 
 restart= tk.Button(my_frame, text='Restart', width= 6, height = 2, command = reset).grid(row=4, column=0, columnspan = 3, sticky = tk.W) 
@@ -105,30 +102,6 @@ for r in range(4):
             
 my_label = tk.Label(root, text = ' ')
 my_label.pack(pady = 20)
-canvas = tk.Canvas(root)
-canvas.pack()
-time = 0
-minute = 0
-def tick():
-    canvas.delete(tk.ALL)
-    global minute
-    global time
-    time += 1
-    timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
-    #canvas.move(0,0,0)
-    
-    
-
-    if time == 60:
-        time = 0
-        minute+=1
-        canvas.after(1000, tick)
-        # add resetting, perhaps a loss screen here when time == 0
-    else:
-        canvas.after(1000, tick)
-canvas.after(1, tick)
-
-
 
 
 root.mainloop()
