@@ -21,7 +21,6 @@ my_frame = tk.Frame(root)
 my_frame.pack(pady=10)
 
 count = 0
-counter=0
 answer_list = []
 answer_dict ={} 
 
@@ -43,8 +42,6 @@ def button_click(b, i):
     if len(answer_list) == 2:
         if matches[answer_list[0]] == matches[answer_list[1]]: #direct comparison nums are fine objs not so much
             my_label.config(text="MATCH!")
-            global counter
-            counter+=1
             for key in answer_dict:
                 key["state"] = "disabled"
 
@@ -69,18 +66,15 @@ def reset():
 
     matches = [1,2,3,4,5,6,7,8]*2
     random.shuffle(matches)
-    my_label.config(text="") 
+    my_label.config(text=" ") 
 
     # buttonlist = [b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15]
     for button in grid_buttons:
         button.config(text='?', state="normal", image ='')
-
     canvas.delete(tk.ALL)
     minute = 0
     time = 0
-    # timer = canvas.create_text(100,100, text= "Minutes: 0 Seconds: 0")
-
-        
+    timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
 
 
 restart= tk.Button(my_frame, text='Restart', width= 6, height = 2, command = reset).grid(row=4, column=0, columnspan = 3, sticky = tk.W) 
@@ -108,50 +102,6 @@ for r in range(4):
             
 my_label = tk.Label(root, text = ' ')
 my_label.pack(pady = 20)
-canvas = tk.Canvas(root)
-canvas.pack()
-time = 0
-minute = 0
-def tick():
-    
-    
-    global minute
-    global time
-    if counter == 16:
-        time+=0
-        timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
-    canvas.delete(tk.ALL)
-
-    #time += 1
-    #timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
-    #canvas.move(0,0,0)
-    
-    
-    if time == 60:
-        time = 0
-        minute+=1
-        canvas.after(1000, tick)
-        # add resetting, perhaps a loss screen here when time == 0
-    else:
-        canvas.after(1000, tick)
-        if counter == 16:
-            timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
-            time+=0
-            
-        else:
-            time+=1
-            timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
-            
-    if counter==16:
-        canvas.delete(tk.ALL)
-        
-        timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
-        minute +=0
-        time += 0
-        
-canvas.after(0, tick)
-
-
 
 
 root.mainloop()
