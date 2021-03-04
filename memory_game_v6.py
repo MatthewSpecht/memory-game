@@ -20,6 +20,7 @@ my_frame = tk.Frame(root)
 my_frame.pack(pady=10)
 
 count = 0
+counter=0
 answer_list = []
 answer_dict ={} 
 
@@ -41,6 +42,8 @@ def button_click(b, i):
     if len(answer_list) == 2:
         if matches[answer_list[0]] == matches[answer_list[1]]: #direct comparison nums are fine objs not so much
             my_label.config(text="MATCH!")
+            global counter
+            counter+=1
             for key in answer_dict:
                 key["state"] = "disabled"
 
@@ -102,15 +105,20 @@ canvas.pack()
 time = 0
 minute = 0
 def tick():
-    canvas.delete(tk.ALL)
+    
+    
     global minute
     global time
-    time += 1
-    timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
+    if counter == 16:
+        time+=0
+        timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
+    canvas.delete(tk.ALL)
+
+    #time += 1
+    #timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
     #canvas.move(0,0,0)
     
     
-
     if time == 60:
         time = 0
         minute+=1
@@ -118,7 +126,22 @@ def tick():
         # add resetting, perhaps a loss screen here when time == 0
     else:
         canvas.after(1000, tick)
-canvas.after(1, tick)
+        if counter == 16:
+            timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
+            time+=0
+            
+        else:
+            time+=1
+            timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
+            
+    if counter==16:
+        canvas.delete(tk.ALL)
+        
+        timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
+        minute +=0
+        time += 0
+        
+canvas.after(0, tick)
 
 
 
