@@ -34,6 +34,9 @@ def button_click(b, i):
         answer_list.append(i)
         # add button & num to answer dict
         answer_dict[b] = matches[i]
+
+        print(answer_dict)
+        print(answer_list)
         #turn +1
         count+=1
         #print answer_list ##keeps track of tile

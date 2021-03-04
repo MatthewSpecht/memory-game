@@ -26,6 +26,11 @@ answer_dict ={}
 
 def button_click(b, i):
     global count, answer_list, answer_dict
+
+    # check if button was already pressed, if yes, just return (do nothing)
+    if i in answer_list:
+      return
+
     if b["text"] == '?' and count < 2:
         b.configure(image = images[matches[i]])
         b.photo = images[matches[i]] #keep a refrence to it 
@@ -48,6 +53,7 @@ def button_click(b, i):
             count = 0
             answer_list = []
             answer_dict = {}
+            #could be attributes t organize better
         else:
             my_label.config(text="NO!")
             count = 0
@@ -62,7 +68,7 @@ def button_click(b, i):
             answer_dict = {}
 
 def reset():
-    global matches, winner
+    global matches, winner, time, minute
 
     matches = [1,2,3,4,5,6,7,8]*2
     random.shuffle(matches)
@@ -119,7 +125,7 @@ def tick():
     
     
 
-    if time == 60:
+    if time == 59:
         time = 0
         minute+=1
         canvas.after(1000, tick)
@@ -128,12 +134,12 @@ def tick():
         canvas.after(1000, tick)
 canvas.after(1, tick)
 
-my_menu = Menu(root)
-root.config(menu=my_menu)
+# my_menu = Menu(root)
+# root.config(menu=my_menu)
 
-option_menu = Menu(my_menu, tearoff=False)
-my_menu.add_cascade(Label = "Options", menu=option_menu) 
-option_menu.add_command(Label = "Fruits", command=fruit_deck)
+# option_menu = Menu(my_menu, tearoff=False)
+# my_menu.add_cascade(Label = "Options", menu=option_menu) 
+# option_menu.add_command(Label = "Fruits", command=fruit_deck)
 
 
 root.mainloop()
