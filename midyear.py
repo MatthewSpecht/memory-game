@@ -21,12 +21,16 @@ my_frame = tk.Frame(root)
 my_frame.pack(pady=10)
 
 count = 0
-counter=0
 answer_list = []
 answer_dict ={} 
 
 def button_click(b, i):
     global count, answer_list, answer_dict
+
+    # check if button was already pressed, if yes, just return (do nothing)
+    if i in answer_list:
+      return
+
     if b["text"] == '?' and count < 2:
         b.configure(image = images[matches[i]])
         b.photo = images[matches[i]] #keep a refrence to it 
@@ -43,14 +47,13 @@ def button_click(b, i):
     if len(answer_list) == 2:
         if matches[answer_list[0]] == matches[answer_list[1]]: #direct comparison nums are fine objs not so much
             my_label.config(text="MATCH!")
-            global counter
-            counter+=1
             for key in answer_dict:
                 key["state"] = "disabled"
 
             count = 0
             answer_list = []
             answer_dict = {}
+            #could be attributes t organize better
         else:
             my_label.config(text="NO!")
             count = 0
@@ -65,7 +68,7 @@ def button_click(b, i):
             answer_dict = {}
 
 def reset():
-    global matches, winner
+    global matches, winner, time, minute
 
     matches = [1,2,3,4,5,6,7,8]*2
     random.shuffle(matches)
@@ -113,50 +116,30 @@ canvas.pack()
 time = 0
 minute = 0
 def tick():
-    
-    
+    canvas.delete(tk.ALL)
     global minute
     global time
-    if counter == 16:
-        time+=0
-        timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
-    canvas.delete(tk.ALL)
-
-    #time += 1
-    #timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
+    time += 1
+    timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
     #canvas.move(0,0,0)
     
     
-    if time == 60:
+
+    if time == 59:
         time = 0
         minute+=1
         canvas.after(1000, tick)
         # add resetting, perhaps a loss screen here when time == 0
     else:
         canvas.after(1000, tick)
-        if counter == 16:
-            timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
-            time+=0
-            
-        else:
-            time+=1
-            timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
-            
-    if counter==16:
-        canvas.delete(tk.ALL)
-        
-        timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
-        minute +=0
-        time += 0
-        
-canvas.after(0, tick)
+canvas.after(1, tick)
 
-my_menu = Menu(root)
-root.config(menu=my_menu)
+# my_menu = Menu(root)
+# root.config(menu=my_menu)
 
-option_menu = Menu(my_menu, tearoff=False)
-my_menu.add_cascade(Label = "Options", menu=option_menu) 
-option_menu.add_command(Label = "Fruits", command=fruit_deck)
+# option_menu = Menu(my_menu, tearoff=False)
+# my_menu.add_cascade(Label = "Options", menu=option_menu) 
+# option_menu.add_command(Label = "Fruits", command=fruit_deck)
 
 
 root.mainloop()
