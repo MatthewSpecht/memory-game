@@ -26,7 +26,7 @@ answer_dict ={}
 
 def button_click(b, i):
     global count, answer_list, answer_dict
-
+    counter=0
     # check if button was already pressed, if yes, just return (do nothing)
     if i in answer_list:
       return
@@ -47,6 +47,7 @@ def button_click(b, i):
     if len(answer_list) == 2:
         if matches[answer_list[0]] == matches[answer_list[1]]: #direct comparison nums are fine objs not so much
             my_label.config(text="MATCH!")
+            counter+=1
             for key in answer_dict:
                 key["state"] = "disabled"
 
@@ -54,6 +55,8 @@ def button_click(b, i):
             answer_list = []
             answer_dict = {}
             #could be attributes t organize better
+        elif counter == 16:
+            messagebox.showinfo("Winner! You have won!")
         else:
             my_label.config(text="NO!")
             count = 0
@@ -95,7 +98,7 @@ index = 0
 for r in range(4):
   for c in range(4):
     # created the button
-    b = tk.Button(my_frame, text = '?',  font=("Helvetica", 10), bg = 'Red',height = 20,width=20)
+    b = tk.Button(my_frame, text = '?',  font=("Helvetica", 10), bg = 'Red', height = 20,width=30)
 
     # adding button to a list
     grid_buttons.append(b)
