@@ -21,7 +21,7 @@ answer_list = []
 answer_dict ={} 
 
 def button_click(b, i):
-    global count, answer_list, answer_dict, images
+    global count, answer_list, answer_dict, counter
     counter = 0 
     # check if button was already pressed, if yes, just return (do nothing)
     if i in answer_list:
@@ -70,7 +70,7 @@ def button_click(b, i):
             answer_dict = {}
 
 def reset():
-    global matches, winner, time, minute
+    global matches, winner, time, minute, counter
 
     matches = [1,2,3,4,5,6,7]*2
     random.shuffle(matches)
@@ -121,32 +121,34 @@ canvas = tk.Canvas(root)
 canvas.pack()
 time = 0
 minute = 0
+
+
 def tick():
+    global minute, time
+
+    my_label = tk.Label(root, text = ' ')
+    my_label.pack(pady = 20)
+    canvas = tk.Canvas(root)
+    canvas.pack()
+    time = 0
+    minute = 0
+
+
     canvas.delete(tk.ALL)
-    global minute
-    global time
     time += 1
     timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
     #canvas.move(0,0,0)
-    
-    
 
     if time == 59:
         time = 0
         minute+=1
         canvas.after(1000, tick)
         # add resetting, perhaps a loss screen here when time == 0
-
-    # elif counter==8:
-    #     canvas.delete(tk.ALL)
-        
-    #     timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
-    #     minute +=0
-    #     time += 0
-        
     else:
         canvas.after(1000, tick)
 canvas.after(1, tick)
+
+
 
 
 # my_menu = tk.Menu(root)

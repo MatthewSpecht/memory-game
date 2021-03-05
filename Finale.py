@@ -9,7 +9,7 @@ root.title("Memory Game")
 
 
 images = [PhotoImage(file = "small_fruits/small_orange.gif"),PhotoImage(file = "small_fruits/small_grape.gif"), 
-PhotoImage(file = "small_fruits/small_peach.gif"),PhotoImage(file = "small_fruits/small_pear.gif"),
+PhotoImage(file = "small_fruits/small_peach.gif"),PhotoImage(file = "small_fruits/smol_pear.gif"),
 PhotoImage(file = "small_fruits/small_watermelon.gif"),PhotoImage(file = "small_fruits/small_strawberry.gif"),PhotoImage(file = "small_fruits/small_banana.gif"), PhotoImage(file = "small_fruits/small_apple.gif")]
 # images = [PhotoImage(file = "small_fruits/small_orange.gif")]*8
 matches = [0,1,2,3,4,5,6,7]*2
@@ -110,29 +110,27 @@ for r in range(4):
             
 my_label = tk.Label(root, text = ' ')
 my_label.pack(pady = 20)
-canvas = tk.Canvas(root)
-canvas.pack()
-time = 0
-minute = 0
+# canvas = tk.Canvas(root)
+# canvas.pack()
+# time = 0
+# minute = 0
 
-def tick():
-    canvas.delete(tk.ALL)
-    global minute
-    global time
-    time += 1
-    timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
-    #canvas.move(0,0,0)
-    
-    
+# def tick():
+#     canvas.delete(tk.ALL)
+#     global minute
+#     global time
+#     time += 1
+#     timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
+#     #canvas.move(0,0,0)
 
-    if time == 60:
-        time = 0
-        minute+=1
-        canvas.after(1000, tick)
-        # add resetting, perhaps a loss screen here when time == 0
-    else:
-        canvas.after(1000, tick)
-canvas.after(1, tick)
+#     if time == 60:
+#         time = 0
+#         minute+=1
+#         canvas.after(1000, tick)
+#         # add resetting, perhaps a loss screen here when time == 0
+#     else:
+#         canvas.after(1000, tick)
+# canvas.after(1, tick)
 
 # my_menu = Menu(root)
 # root.config(menu=my_menu)
