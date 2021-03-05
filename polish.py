@@ -8,8 +8,12 @@ root.title("Memory Game")
 # root.geometery("550x550")
 
 
-
+images = [PhotoImage(file = "small_fruits/small_orange.gif"),PhotoImage(file = "small_fruits/small_grape.gif"), 
+PhotoImage(file = "small_fruits/small_peach.gif"),PhotoImage(file = "small_fruits/small_pear.gif"),
+PhotoImage(file = "small_fruits/small_watermelon.gif"),PhotoImage(file = "small_fruits/small_strawberry.gif"),PhotoImage(file = "small_fruits/small_banana.gif"), PhotoImage(file = "small_fruits/small_apple.gif")]
+# images = [PhotoImage(file = "small_fruits/small_orange.gif")]*8
 matches = [0,1,2,3,4,5,6,7]*2
+
 
 random.shuffle(matches)
 
@@ -21,14 +25,14 @@ answer_list = []
 answer_dict ={} 
 
 def button_click(b, i):
-    global count, answer_list, answer_dict, images
-    counter=0
+    global count, answer_list, answer_dict
+
     # check if button was already pressed, if yes, just return (do nothing)
     if i in answer_list:
       return
 
     if b["text"] == '?' and count < 2:
-        b.configure(image = images[matches[i]]) or b
+        b.configure(image = images[matches[i]])
         b.photo = images[matches[i]] #keep a refrence to it 
 
         # add num to answer list
@@ -44,16 +48,13 @@ def button_click(b, i):
         my_label.config(text=" ")
         if matches[answer_list[0]] == matches[answer_list[1]]: #direct comparison nums are fine objs not so much
             my_label.config(text="MATCH!")
-            counter+=1
             for key in answer_dict:
                 key["state"] = "disabled"
 
             count = 0
             answer_list = []
             answer_dict = {}
-            #could be attributes t organize better
         else:
-            my_label.config(text="NO!")
             count = 0
             answer_list = []
             messagebox.showinfo("Incorrect!","Incorrect")
@@ -68,7 +69,7 @@ def button_click(b, i):
 def reset():
     global matches, winner, time, minute
 
-    matches = [1,2,3,4,5,6,7]*2
+    matches = [1,2,3,4,5,6,7,8]*2
     random.shuffle(matches)
     my_label.config(text="") 
 
@@ -82,20 +83,6 @@ def reset():
     # timer = canvas.create_text(100,100, text= "Minutes: 0 Seconds: 0")
 
         
-def fruit_deck():
-    pass
-#     global images
-#     images = [PhotoImage(file = "small_fruits/small_orange.gif"),PhotoImage(file = "small_fruits/small_grape.gif"), 
-#     PhotoImage(file = "small_fruits/small_peach.gif"),PhotoImage(file = "small_fruits/small_pear.gif"),
-#     PhotoImage(file = "small_fruits/small_watermelon.gif"),PhotoImage(file = "small_fruits/small_strawberry.gif"),
-#     PhotoImage(file = "small_fruits/small_banana.gif"), PhotoImage(file = "small_fruits/small_apple.gif")]
-
-
-def veg_deck():
-    images = [PhotoImage(file = "small_vegs/beet.gif"),PhotoImage(file = "small_vegs/broccoli.gif"), 
-    PhotoImage(file = "small_vegs/carrot.gif"),PhotoImage(file = "small_vegs/cauliflower.gif"),
-    PhotoImage(file = "small_vegs/celery.gif"),PhotoImage(file = "small_vegs/ginger.gif"),
-    PhotoImage(file = "small_vegs/potato.gif"),PhotoImage(file = "small_vegs/spinach.gif")]
 
 
 restart= tk.Button(my_frame, text='Restart', width= 6, height = 2, command = reset).grid(row=4, column=0, columnspan = 3, sticky = tk.W) 
@@ -127,6 +114,7 @@ canvas = tk.Canvas(root)
 canvas.pack()
 time = 0
 minute = 0
+
 def tick():
     canvas.delete(tk.ALL)
     global minute
@@ -137,35 +125,21 @@ def tick():
     
     
 
-    if time == 59:
+    if time == 60:
         time = 0
         minute+=1
         canvas.after(1000, tick)
         # add resetting, perhaps a loss screen here when time == 0
-    elif counter==8:
-        canvas.delete(tk.ALL)
-        
-        timer = canvas.create_text(100,100, text= "Minutes: " + str(minute) + " Seconds:" + str(time))
-        minute +=0
-        time += 0
-        
-
     else:
         canvas.after(1000, tick)
 canvas.after(1, tick)
 
+# my_menu = Menu(root)
+# root.config(menu=my_menu)
 
-my_menu = tk.Menu(root)
-root.config(menu=my_menu)
-
-option_menu = tk.Menu(my_menu, tearoff=False)
-my_menu.add_cascade(label = "Options", menu=option_menu) 
-option_menu.add_command(label = "Fruits", command=fruit_deck)
-# option_menu.add_seperator()
-option_menu.add_command(label = "Vegtables", command=veg_deck)
-
-# Label(mainframe, text="Choose a dish").grid(row = 1, column = 1)
-# popupMenu.grid(row = 2, column =1)
+# option_menu = Menu(my_menu, tearoff=False)
+# my_menu.add_cascade(Label = "Options", menu=option_menu) 
+# option_menu.add_command(Label = "Fruits", command=fruit_deck)
 
 
 root.mainloop()
