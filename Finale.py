@@ -10,9 +10,10 @@ root.title("Memory Game")
 
 images = [PhotoImage(file = "small_fruits/small_orange.gif"),PhotoImage(file = "small_fruits/small_grape.gif"), 
 PhotoImage(file = "small_fruits/small_peach.gif"),PhotoImage(file = "small_fruits/smol_pear.gif"),
-PhotoImage(file = "small_fruits/small_watermelon.gif"),PhotoImage(file = "small_fruits/small_strawberry.gif"),PhotoImage(file = "small_fruits/small_banana.gif"), PhotoImage(file = "small_fruits/small_apple.gif")]
+PhotoImage(file = "small_fruits/small_watermelon.gif"),PhotoImage(file = "small_fruits/small_strawberry.gif"),
+PhotoImage(file = "small_fruits/small_banana.gif"), PhotoImage(file = "small_fruits/small_apple.gif")]
 # images = [PhotoImage(file = "small_fruits/small_orange.gif")]*8
-matches = [0,1,2,3,4,5,6,7,8]*2
+matches = [0,1,2,3,4,5,6,7]*2
 
 
 random.shuffle(matches)
@@ -69,7 +70,7 @@ def button_click(b, i):
 def reset():
     global matches, winner, time, minute
 
-    matches = [1,2,3,4,5,6,7,8]*2
+    matches = [0,1,2,3,4,5,6,7]*2
     random.shuffle(matches)
     my_label.config(text="") 
 
@@ -77,9 +78,9 @@ def reset():
     for button in grid_buttons:
         button.config(text='?', state="normal", image ='')
 
-    canvas.delete(tk.ALL)
-    minute = 0
-    time = 0
+    # canvas.delete(tk.ALL)
+    # minute = 0
+    # time = 0
     # timer = canvas.create_text(100,100, text= "Minutes: 0 Seconds: 0")
 
         
